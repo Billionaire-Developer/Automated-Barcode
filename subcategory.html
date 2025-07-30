@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subcategory Files</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .file-card {
+      background-color: #28a745;
+      color: #fff;
+      padding: 15px;
+      margin: 15px auto;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .file-card:hover {
+      background-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="subTitle">Subcategory</h2>
+
+  <!-- File cards -->
+  <div class="file-card" onclick="openScanner('lesson1')">Lesson 1</div>
+  <div class="file-card" onclick="openScanner('lesson2')">Lesson 2</div>
+  <div class="file-card" onclick="openScanner('quiz')">Quiz</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get('category');
+    const sub = params.get('sub');
+
+    document.getElementById('subTitle').innerText =
+      `${category.toUpperCase()} → ${sub.toUpperCase()}`;
+
+    function openScanner(fileId) {
+      window.location.href = `scanner.html?category=${category}&sub=${sub}&file=${fileId}`;
+    }
+  </script>
+
+</body>
+</html>
